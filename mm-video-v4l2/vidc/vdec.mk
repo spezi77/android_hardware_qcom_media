@@ -70,7 +70,6 @@ libOmxVdec-def += -DMAX_RES_1080P
 libOmxVdec-def += -DMAX_RES_1080P_EBI
 libOmxVdec-def += -DPROCESS_EXTRADATA_IN_OUTPUT_PORT
 libOmxVdec-def += -D_MSM8974_
-libOmxVdec-def += -D_ION_HEAP_MASK_COMPATIBILITY_WA
 endif
 ifneq ($(filter msm8992 msm8994,$(TARGET_BOARD_PLATFORM)),)
 libOmxVdec-def += -DMAX_RES_1080P
@@ -86,6 +85,9 @@ endif
 
 libOmxVdec-def += -DFLEXYUV_SUPPORTED
 libOmxVdec-def += -DADAPTIVE_PLAYBACK_SUPPORTED
+ifeq ($(TARGET_USE_ION_COMPAT), true)
+libOmxVdec-def += -D_ION_HEAP_MASK_COMPATIBILITY_WA
+endif
 
 vdec-inc       = $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 
