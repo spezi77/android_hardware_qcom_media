@@ -64,6 +64,12 @@ extern "C"{
 #define DEBUG_PRINT_ERROR printf
 #endif // _ANDROID_
 
+#ifdef _ION_HEAP_MASK_COMPATIBILITY_WA
+    #define ION_HEAP_MASK heap_mask
+#else
+    #define ION_HEAP_MASK heap_id_mask
+#endif
+
 #define SEI_PAYLOAD_FRAME_PACKING_ARRANGEMENT 0x2D
 #define H264_START_CODE 0x01
 #define NAL_TYPE_SEI 0x06
